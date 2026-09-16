@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
-const repo = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}` : '';
+const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: isGithubActions ? repo : '',
+  basePath: isProd ? '/iqlaunch' : '',
   images: {
     unoptimized: true,
   },
