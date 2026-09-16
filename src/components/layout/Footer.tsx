@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getAssetPath } from '@/lib/utils';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -11,7 +12,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logo} aria-label="iQLaunch — Home">
-              <Image src="/logo-white.png" alt="iQLaunch" className={styles.logoImage} width={140} height={30} />
+              <Image src={getAssetPath('/logo-white.png')} alt="iQLaunch" className={styles.logoImage} width={140} height={30} />
             </Link>
             <p className={styles.tagline}>
               Intelligent systems. Automated operations. Digital infrastructure.

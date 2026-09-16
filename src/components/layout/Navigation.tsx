@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useNavScroll } from '@/lib/animations';
+import { getAssetPath } from '@/lib/utils';
 import styles from './Navigation.module.css';
 
 const navLinks = [
@@ -31,7 +32,7 @@ export default function Navigation() {
         <nav className={styles.nav} aria-label="Main navigation">
           <Link href="/" className={styles.logo} onClick={closeMobile} aria-label="iQLaunch — Home">
             <Image
-              src="/logo-white.png"
+              src={getAssetPath('/logo-white.png')}
               alt="iQLaunch"
               className={styles.logoImage}
               width={168}

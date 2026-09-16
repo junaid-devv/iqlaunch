@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getAssetPath } from '@/lib/utils';
 
 export interface ParallaxComponentProps {
   head?: string;
@@ -108,7 +109,7 @@ export const ParallaxComponent: React.FC<ParallaxComponentProps> = ({
         {isIQLaunch ? (
           <h1 id="title" className="select-none flex items-center justify-center mx-auto">
             <Image
-              src="/logo-white.png"
+              src={getAssetPath('/logo-white.png')}
               alt="iQLaunch"
               width={714}
               height={153}
