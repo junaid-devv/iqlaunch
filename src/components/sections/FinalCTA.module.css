@@ -1,0 +1,135 @@
+.section {
+  padding: 100px var(--grid-margin);
+  background-color: #050507;
+  position: relative;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.ctaCard {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionNumber {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #A1A1AA;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #71717A;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 680px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.subtext {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #A1A1AA;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.primaryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #09090B;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.primaryLink:hover {
+  background: #E4E4E7;
+  transform: scale(1.03);
+}
+
+.arrow {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.primaryLink:hover .arrow {
+  transform: translateX(3px);
+}
+
+.emailDirect {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #A1A1AA;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.emailDirect:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px var(--grid-margin);
+  }
+  .ctaCard {
+    padding: 40px 24px;
+  }
+}

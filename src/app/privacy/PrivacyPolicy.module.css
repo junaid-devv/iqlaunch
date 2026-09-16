@@ -1,0 +1,326 @@
+/* ============================================================
+   PrivacyPolicy.module.css — Professional Legal Document Styles
+   ============================================================ */
+
+.page {
+  min-height: 100vh;
+  background-color: #030304;
+  color: #FAFAFA;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Atmospheric subtle background glow */
+.bgGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(120, 119, 198, 0.05), transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Back navigation */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717A;
+  margin-bottom: 32px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.backLink:hover {
+  color: #FFFFFF;
+  transform: translateX(-3px);
+}
+
+/* Header section */
+.header {
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 40px;
+}
+
+.badgeRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.badgePulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+
+.badgeText {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A1A1AA;
+  font-weight: 500;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.2vw, 54px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.lastUpdated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #71717A;
+  margin-bottom: 28px;
+}
+
+.leadParagraph {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.75;
+  color: #D4D4D8;
+  margin-bottom: 16px;
+}
+
+.leadSub {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #A1A1AA;
+}
+
+/* Quick Navigation / Table of Contents */
+.tocBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
+
+.tocTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #71717A;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.tocGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+
+.tocLink {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #A1A1AA;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.tocLink:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.tocArrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #52525B;
+  transition: color 0.2s ease;
+}
+
+.tocLink:hover .tocArrow {
+  color: #FFFFFF;
+}
+
+/* Content Sections */
+.sectionBlock {
+  margin-bottom: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  scroll-margin-top: 100px;
+}
+
+.sectionBlock:last-of-type {
+  border-bottom: none;
+  margin-bottom: 24px;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.sectionNumber {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: #71717A;
+  font-weight: 600;
+}
+
+.bodyText {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #A1A1AA;
+  margin-bottom: 16px;
+}
+
+.bodyText:last-child {
+  margin-bottom: 0;
+}
+
+/* Feature / Item List */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItem {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #A1A1AA;
+  position: relative;
+  padding-left: 20px;
+}
+
+.listItem::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #52525B;
+}
+
+.itemLabel {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Highlighted Callout Box */
+.callout {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 3px solid #FFFFFF;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+
+.calloutText {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #D4D4D8;
+}
+
+/* Contact Card */
+.contactCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-top: 20px;
+}
+
+.contactCompany {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.contactEmail {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: #FAFAFA;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.contactEmail:hover {
+  color: #10B981;
+}
+
+/* Document Footer Note */
+.footerNotice {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #52525B;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+
+  .tocGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+  }
+
+  .tocBox {
+    padding: 20px;
+  }
+}

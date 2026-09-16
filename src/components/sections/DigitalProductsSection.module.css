@@ -1,0 +1,244 @@
+.section {
+  padding: 100px var(--grid-margin);
+  background-color: #030304;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sectionNumber {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #A1A1AA;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #71717A;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #A1A1AA;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  margin-bottom: 32px;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.catTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.catDesc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #71717A;
+  line-height: 1.5;
+}
+
+.actionRow {
+  padding-top: 8px;
+}
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: #E4E4E7;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.exploreLink:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+/* Right Column Preview Card */
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.previewCard {
+  width: 100%;
+  max-width: 520px;
+  background: #09090C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.previewDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.previewTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #A1A1AA;
+}
+
+.previewContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #71717A;
+}
+
+.statVal {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.listPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.previewRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.prId {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #71717A;
+}
+
+.prDesc {
+  color: #E4E4E7;
+  font-weight: 500;
+}
+
+.prStatus {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #10B981;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px var(--grid-margin);
+  }
+}
