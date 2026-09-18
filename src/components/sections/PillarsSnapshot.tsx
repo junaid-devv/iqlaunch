@@ -33,7 +33,7 @@ const pillars = [
 
 export default function PillarsSnapshot() {
   return (
-    <section className={styles.section} aria-labelledby="pillars-heading">
+    <section id="capabilities" className={styles.section} aria-labelledby="pillars-heading">
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
