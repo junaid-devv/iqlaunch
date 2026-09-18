@@ -3,9 +3,9 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn, getAssetPath } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Bot, Globe, Smartphone, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Bot, Globe, Smartphone, ArrowRight } from 'lucide-react';
 
 // Defines the props for a single button within a card
 export interface CardButton {
@@ -22,8 +22,7 @@ export interface DownloadCardProps {
   description: string;
   lightImage?: string;
   darkImage?: string;
-  mockupImage?: string;
-  mockupNode?: React.ReactNode;
+  mockupImage: string;
   buttons: CardButton[];
   className?: string;
 }
@@ -35,59 +34,54 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
   lightImage,
   darkImage,
   mockupImage,
-  mockupNode,
   buttons,
   className,
 }) => {
+  const resolvedDarkImage = darkImage ? getAssetPath(darkImage) : getAssetPath('/bg-cubes-dark.png');
+  const resolvedLightImage = lightImage ? getAssetPath(lightImage) : resolvedDarkImage;
+  const resolvedMockup = getAssetPath(mockupImage);
+
   return (
     <div
       className={cn(
-        'group relative flex w-full flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-white/10 bg-[#09090c]/85 p-6 backdrop-blur-md transition-all duration-300 hover:border-white/25 hover:shadow-[0_0_30px_rgba(255,255,255,0.04)]',
+        'group relative flex w-full flex-col justify-between gap-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#09090b]/90 p-7 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.03)]',
         className
       )}
     >
-      {/* Background Gradient Images / Subtle Backdrops */}
+      {/* Background Gradient & Geometric Wireframe Texture */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         {lightImage && (
           <img
             alt="background gradient light"
-            className="h-full w-full object-cover opacity-20 transition-all duration-300 group-hover:scale-105 dark:hidden"
-            src={lightImage}
+            className="h-full w-full object-cover opacity-30 transition-all duration-300 group-hover:scale-105 dark:hidden"
+            src={resolvedLightImage}
           />
         )}
-        {darkImage && (
-          <img
-            alt="background gradient dark"
-            className="hidden h-full w-full object-cover opacity-20 transition-all duration-300 group-hover:scale-105 dark:block"
-            src={darkImage}
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+        <img
+          alt="background geometry dark"
+          className="h-full w-full object-cover opacity-40 transition-all duration-300 group-hover:scale-105"
+          src={resolvedDarkImage}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#09090b]/40 via-transparent to-[#09090b]/90 pointer-events-none" />
       </div>
 
-      {/* Card Content Header */}
+      {/* Card Header Content */}
       <div className="relative z-10 flex flex-col items-center text-center">
-        <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-white">{title}</h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-[260px]">{description}</p>
+        <h3 className="text-xl font-bold tracking-tight text-white">{title}</h3>
+        <p className="mt-1.5 text-sm text-zinc-400 leading-snug">{description}</p>
       </div>
 
-      {/* Animated Floating Mockup Graphic */}
-      <div className="relative z-10 mx-auto my-2 w-full max-w-[240px] flex items-center justify-center animate-float">
-        {mockupNode ? (
-          <div className="w-full transition-transform duration-300 group-hover:scale-105">
-            {mockupNode}
-          </div>
-        ) : (
-          <img
-            alt={`${title} mockup`}
-            className="aspect-square w-full max-w-[180px] rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
-            src={mockupImage}
-          />
-        )}
+      {/* Animated Floating 3D Mockup */}
+      <div className="relative z-10 mx-auto my-3 flex h-[180px] w-full max-w-[200px] items-center justify-center">
+        <img
+          alt={`${title} mockup`}
+          className="animate-float h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-105"
+          src={resolvedMockup}
+        />
       </div>
 
       {/* Action Buttons */}
-      <div className="relative z-10 flex w-full flex-col gap-2">
+      <div className="relative z-10 flex w-full flex-col gap-2.5">
         {buttons.map((button, index) => {
           if (button.href) {
             return (
@@ -95,12 +89,11 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
                 key={index}
                 asChild
                 variant={button.variant || 'secondary'}
-                className="w-full justify-center text-xs sm:text-sm tracking-wide border border-white/10 hover:border-white/25 hover:bg-white/10 transition-colors"
+                className="w-full justify-center rounded-xl border border-white/10 bg-[#18181b]/90 text-sm font-medium text-zinc-200 hover:bg-zinc-800 hover:text-white transition-all py-3 h-auto"
               >
                 <Link href={button.href} className="inline-flex items-center justify-center">
                   {button.icon && <span className="mr-2 inline-flex items-center">{button.icon}</span>}
                   <span>{button.text}</span>
-                  <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 opacity-60" />
                 </Link>
               </Button>
             );
@@ -110,7 +103,7 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
             <Button
               key={index}
               variant={button.variant || 'secondary'}
-              className="w-full justify-center text-xs sm:text-sm tracking-wide border border-white/10 hover:border-white/25 hover:bg-white/10 transition-colors"
+              className="w-full justify-center rounded-xl border border-white/10 bg-[#18181b]/90 text-sm font-medium text-zinc-200 hover:bg-zinc-800 hover:text-white transition-all py-3 h-auto"
               onClick={button.onClick}
             >
               {button.icon && <span className="mr-2 inline-flex items-center">{button.icon}</span>}
@@ -123,37 +116,14 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
   );
 };
 
-// The main component that showcases all three pillars of what we build
+// The main showcase component configured for What We Build: AI Agents, Websites, Mobile Apps
 export const DownloadShowcase: React.FC = () => {
-  const capabilities: DownloadCardProps[] = [
+  const downloadOptions: DownloadCardProps[] = [
     {
       title: 'AI Agents',
-      description: 'Autonomous reasoning engines and WhatsApp operations that resolve workflows 24/7.',
-      mockupNode: (
-        <div className="w-full rounded-xl border border-white/10 bg-[#060608]/90 p-3.5 shadow-2xl backdrop-blur-md">
-          <div className="flex items-center justify-between pb-2 border-b border-white/5">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-mono text-[10px] text-zinc-300 tracking-wider">ORDERIQ // ENGINE</span>
-            </div>
-            <span className="font-mono text-[9px] text-zinc-500">120ms</span>
-          </div>
-          <div className="mt-2.5 space-y-1.5 font-mono text-[10px]">
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Inbound WhatsApp</span>
-              <span className="text-emerald-400">Parsed</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Tool Calling</span>
-              <span className="text-cyan-400">Executed</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● POS Dispatch</span>
-              <span className="text-emerald-400">Synced</span>
-            </div>
-          </div>
-        </div>
-      ),
+      description: 'Autonomous reasoning & WhatsApp workflows',
+      darkImage: '/bg-cubes-dark.png',
+      mockupImage: '/agent-mockup.jpg',
       buttons: [
         {
           text: 'Explore AI Agents',
@@ -164,33 +134,9 @@ export const DownloadShowcase: React.FC = () => {
     },
     {
       title: 'Websites',
-      description: 'Sub-second Next.js web applications engineered for speed, conversions, and scale.',
-      mockupNode: (
-        <div className="w-full rounded-xl border border-white/10 bg-[#060608]/90 p-3.5 shadow-2xl backdrop-blur-md">
-          <div className="flex items-center gap-1.5 pb-2 border-b border-white/5">
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <span className="h-2 w-2 rounded-full bg-white/20" />
-            <div className="ml-2 flex-1 rounded bg-white/5 px-2 py-0.5 font-mono text-[9px] text-zinc-400 truncate">
-              iqlaunch.com/portal
-            </div>
-          </div>
-          <div className="mt-2.5 space-y-1.5 font-mono text-[10px]">
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Performance</span>
-              <span className="text-emerald-400">100 / 100</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Architecture</span>
-              <span className="text-zinc-200">App Router</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Edge Caching</span>
-              <span className="text-cyan-400">Global CDN</span>
-            </div>
-          </div>
-        </div>
-      ),
+      description: 'Modern platforms engineered to convert',
+      darkImage: '/bg-cubes-dark.png',
+      mockupImage: '/website-mockup.webp',
       buttons: [
         {
           text: 'Explore Websites',
@@ -201,30 +147,9 @@ export const DownloadShowcase: React.FC = () => {
     },
     {
       title: 'Mobile Apps',
-      description: 'Bespoke iOS and Android applications built for daily operations and high retention.',
-      mockupNode: (
-        <div className="w-full rounded-xl border border-white/10 bg-[#060608]/90 p-3.5 shadow-2xl backdrop-blur-md">
-          <div className="flex items-center justify-between pb-2 border-b border-white/5">
-            <span className="font-mono text-[10px] text-zinc-400">09:41</span>
-            <div className="h-1.5 w-8 rounded-full bg-white/20" />
-            <span className="font-mono text-[9px] text-zinc-400">5G</span>
-          </div>
-          <div className="mt-2.5 space-y-1.5 font-mono text-[10px]">
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Native Runtime</span>
-              <span className="text-zinc-200">iOS & Android</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Offline Sync</span>
-              <span className="text-emerald-400">Active</span>
-            </div>
-            <div className="flex items-center justify-between text-zinc-400">
-              <span>● Security</span>
-              <span className="text-cyan-400">Biometric</span>
-            </div>
-          </div>
-        </div>
-      ),
+      description: 'iOS & Android applications for operations',
+      darkImage: '/bg-cubes-dark.png',
+      mockupImage: '/mobile-mockup.webp',
       buttons: [
         {
           text: 'Explore Mobile Apps',
@@ -239,7 +164,7 @@ export const DownloadShowcase: React.FC = () => {
     <>
       {/* Keyframes for the floating animation */}
       <style jsx global>{`
-        @keyframes floatSlow {
+        @keyframes floatEffect {
           0%, 100% {
             transform: translateY(0);
           }
@@ -248,32 +173,40 @@ export const DownloadShowcase: React.FC = () => {
           }
         }
         .animate-float {
-          animation: floatSlow 4s ease-in-out infinite;
+          animation: floatEffect 4s ease-in-out infinite;
         }
       `}</style>
 
-      <section id="capabilities" className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-white/[0.08]" aria-labelledby="capabilities-heading">
-        <div className="max-w-6xl mx-auto flex flex-col items-center gap-12">
-          {/* Header — Clean and minimal */}
-          <div className="flex flex-col items-center text-center max-w-2xl">
-            <span className="font-mono text-xs tracking-[0.2em] text-zinc-400 uppercase mb-3">
-              02 // What We Build
-            </span>
-            <h2 id="capabilities-heading" className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Intelligent Systems Engineered for Scale
+      <section
+        id="capabilities"
+        className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-white/[0.08] bg-[#030304]"
+        aria-labelledby="capabilities-heading"
+      >
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-10">
+          {/* Header — Clean and minimal, exactly like the reference */}
+          <div className="flex flex-col items-center text-center max-w-xl">
+            <h2 id="capabilities-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+              What We Build
             </h2>
+            <p className="mt-3 text-sm sm:text-base text-zinc-400">
+              Autonomous AI agents, high-conversion websites, and custom mobile apps.
+            </p>
           </div>
 
-          {/* 3-Card Grid */}
+          {/* 3-Card Grid matching the exact reference UI */}
           <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-            {capabilities.map((card, index) => (
+            {downloadOptions.map((card, index) => (
               <DownloadCard key={index} {...card} />
             ))}
           </div>
 
-          {/* Bottom Primary Action Button */}
-          <div className="flex justify-center w-full">
-            <Button asChild size="lg" className="w-full max-w-xs rounded-full bg-white text-zinc-950 font-medium hover:bg-zinc-200 transition-colors">
+          {/* Bottom Action Button matching reference 'Continue' button */}
+          <div className="flex justify-center w-full pt-2">
+            <Button
+              asChild
+              size="lg"
+              className="w-full max-w-xs rounded-full bg-white text-zinc-950 font-medium hover:bg-zinc-200 transition-colors shadow-lg"
+            >
               <Link href="/solutions">
                 <span>View All Specifications</span>
                 <ArrowRight className="ml-2 h-4 w-4" />
