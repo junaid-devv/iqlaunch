@@ -23,6 +23,7 @@ export interface DownloadCardProps {
   lightImage?: string;
   darkImage?: string;
   mockupImage: string;
+  mockupClassName?: string;
   buttons: CardButton[];
   className?: string;
 }
@@ -34,6 +35,7 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
   lightImage,
   darkImage,
   mockupImage,
+  mockupClassName,
   buttons,
   className,
 }) => {
@@ -44,7 +46,7 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
   return (
     <div
       className={cn(
-        'group relative flex w-full flex-col justify-between gap-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#09090b]/90 p-7 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.03)]',
+        'group relative flex w-full flex-col justify-between gap-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#050507] p-7 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_35px_rgba(255,255,255,0.04)]',
         className
       )}
     >
@@ -53,16 +55,16 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
         {lightImage && (
           <img
             alt="background gradient light"
-            className="h-full w-full object-cover opacity-30 transition-all duration-300 group-hover:scale-105 dark:hidden"
+            className="h-full w-full object-cover opacity-25 transition-all duration-300 group-hover:scale-105 dark:hidden"
             src={resolvedLightImage}
           />
         )}
         <img
           alt="background geometry dark"
-          className="h-full w-full object-cover opacity-40 transition-all duration-300 group-hover:scale-105"
+          className="h-full w-full object-cover opacity-35 transition-all duration-300 group-hover:scale-105"
           src={resolvedDarkImage}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#09090b]/40 via-transparent to-[#09090b]/90 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050507]/40 via-transparent to-[#050507]/90 pointer-events-none" />
       </div>
 
       {/* Card Header Content */}
@@ -72,10 +74,13 @@ export const DownloadCard: React.FC<DownloadCardProps> = ({
       </div>
 
       {/* Animated Floating 3D Mockup */}
-      <div className="relative z-10 mx-auto my-3 flex h-[180px] w-full max-w-[200px] items-center justify-center">
+      <div className="relative z-10 mx-auto my-2 flex h-[190px] sm:h-[200px] w-full max-w-[210px] items-center justify-center">
         <img
           alt={`${title} mockup`}
-          className="animate-float h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-105"
+          className={cn(
+            'animate-float h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.85)] transition-transform duration-300 group-hover:scale-105',
+            mockupClassName
+          )}
           src={resolvedMockup}
         />
       </div>
@@ -123,7 +128,8 @@ export const DownloadShowcase: React.FC = () => {
       title: 'AI Agents',
       description: 'Autonomous reasoning & WhatsApp workflows',
       darkImage: '/bg-cubes-dark.png',
-      mockupImage: '/agent-mockup.jpg',
+      mockupImage: '/agent.png',
+      mockupClassName: 'mix-blend-screen',
       buttons: [
         {
           text: 'Explore AI Agents',
@@ -136,7 +142,8 @@ export const DownloadShowcase: React.FC = () => {
       title: 'Websites',
       description: 'Modern platforms engineered to convert',
       darkImage: '/bg-cubes-dark.png',
-      mockupImage: '/website-mockup.webp',
+      mockupImage: '/website.png',
+      mockupClassName: 'mix-blend-screen',
       buttons: [
         {
           text: 'Explore Websites',
