@@ -1,0 +1,327 @@
+/* ============================================================
+   DigitalProductsPage.module.css — OrderIQ & Product Showcase
+   ============================================================ */
+
+.page {
+  min-height: 100vh;
+  background-color: #030304;
+  color: #FAFAFA;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bgGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(120, 119, 198, 0.05), transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+  position: relative;
+  z-index: 1;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717A;
+  margin-bottom: 32px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.backLink:hover {
+  color: #FFFFFF;
+  transform: translateX(-3px);
+}
+
+.header {
+  margin-bottom: 56px;
+  max-width: 880px;
+}
+
+.badgeRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  margin-bottom: 24px;
+}
+
+.badgePulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+
+.badgeText {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #A1A1AA;
+  font-weight: 500;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.75;
+  color: #A1A1AA;
+}
+
+/* Metric Strip */
+.metricStrip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.015);
+  margin-bottom: 64px;
+  overflow: hidden;
+}
+
+.metricItem {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metricItem:last-child {
+  border-right: none;
+}
+
+.metricVal {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.metricLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #71717A;
+}
+
+/* 2x2 Feature Grid */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.featureCard:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.cardIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.cardHeading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #FAFAFA;
+}
+
+.cardDesc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #A1A1AA;
+}
+
+/* Workflow Visualization */
+.workflowBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 48px;
+  margin-bottom: 72px;
+}
+
+.workflowHeader {
+  margin-bottom: 32px;
+}
+
+.workflowTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.workflowSubtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #71717A;
+}
+
+.workflowSteps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stepCard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stepIndex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #10B981;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.stepDesc {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #71717A;
+}
+
+/* Bottom CTA */
+.bottomCta {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 255, 255, 0.05), transparent 70%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.ctaHeading {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.ctaDesc {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #A1A1AA;
+  max-width: 580px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #030304;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ctaBtn:hover {
+  background: #E4E4E7;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+  .metricStrip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metricItem:nth-child(2) {
+    border-right: none;
+  }
+
+  .metricItem:nth-child(1),
+  .metricItem:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .workflowSteps {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .workflowBox {
+    padding: 28px 20px;
+  }
+
+  .page {
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+}

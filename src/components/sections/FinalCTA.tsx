@@ -8,8 +8,8 @@ export default function FinalCTA() {
       <div className={styles.container}>
         <div className={styles.ctaCard} data-animate>
           <div className={styles.header}>
-            <span className={styles.sectionNumber}>08</span>
-            <span className={styles.sectionTitle}>Get Started</span>
+            <span className={styles.sectionNumber}>03</span>
+            <span className={styles.sectionTitle}>Get In Touch</span>
           </div>
 
           <div className={styles.content}>
@@ -18,17 +18,17 @@ export default function FinalCTA() {
             </h2>
 
             <p className={styles.subtext}>
-              Whether you need an autonomous WhatsApp operations engine, an AI agent system, 
-              or bespoke digital products — we start by understanding how your business works.
+              Whether you need an autonomous AI agent, a high-converting web platform, or a custom
+              mobile app for your operations—we start with a direct technical consultation.
             </p>
 
             <div className={styles.actionRow}>
               <Link href="/contact" className={styles.primaryLink}>
-                <span>Start a conversation</span>
+                <span>Initiate Architecture Call</span>
                 <span className={styles.arrow} aria-hidden="true">→</span>
               </Link>
-              <a href="mailto:hello@iqlaunch.com" className={styles.emailDirect}>
-                <span>hello@iqlaunch.com</span>
+              <a href="mailto:junaiddevv@gmail.com" className={styles.emailDirect}>
+                <span>junaiddevv@gmail.com</span>
               </a>
             </div>
           </div>

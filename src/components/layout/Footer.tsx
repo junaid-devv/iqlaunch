@@ -30,6 +30,7 @@ export default function Footer() {
               <Link href="/#about" className={styles.navLink}>About</Link>
               <Link href="/contact" className={styles.navLink}>Contact</Link>
               <Link href="/privacy" className={styles.navLink}>Privacy Policy</Link>
+              <Link href="/terms" className={styles.navLink}>Terms of Service</Link>
             </div>
           </nav>
         </div>
