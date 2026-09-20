@@ -8,7 +8,7 @@ export default function FinalCTA() {
       <div className={styles.container}>
         <div className={styles.ctaCard} data-animate>
           <div className={styles.header}>
-            <span className={styles.sectionNumber}>03</span>
+            <span className={styles.sectionNumber}>06</span>
             <span className={styles.sectionTitle}>Get In Touch</span>
           </div>
 
